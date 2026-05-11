@@ -23,6 +23,12 @@ pipeline{
         stage("deploy"){
             steps{
                 echo "hello"
+                sh"""
+                      cp /home/ec2-user/jenkins/workspace/demo/target/*.war /var/lib/tomcat10/webapps/
+                  """
+                dir("/var/lib/tomcat10/webapps/"){
+                   sh"jar -xvf .war"
+              }
             }
         }
 
