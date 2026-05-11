@@ -25,12 +25,26 @@ pipeline{
                 echo "hello"
                 sh"""
                       sudo cp target/*.war /var/lib/tomcat10/webapps/
+                      
+                      sudo systemctl restart tomcat10
+
+                      sleep 10
+
+                      sudo  cp -r /var/lib/tomcat10/webapps/java-tomcat-maven-example/* /var/lib/tomcat10/webapps/ROOT/
+
                   """
-                dir("/var/lib/tomcat10/webapps/"){
-                   sh"jar -xvf .war"
+                   
               }
             }
-        }
+        stage("cleanup"){
+           steps{
+               sh"""
 
-    }
-}
+                 sudo rm -rf /var/lib/tomcat10/webapps/java-tomcat-maven-example
+                 sudo rm -rf /var/lib/tomcat10/webapps/java-tomcat-maven-example.war
+
+                 sudo systemctl restart tomcat10
+                """
+
+              }
+          }
