@@ -14,6 +14,7 @@ pipeline{
                 checkout scm
             }
         }
+        
         stage("build"){
             steps{
                 echo "build stage"
