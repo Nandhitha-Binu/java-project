@@ -36,7 +36,7 @@ pipeline{
 
                 dir("/opt/tomcat/webapps/"){
                     sh """
-                        jar -xvf *.war
+                        unzip -o *.war
                         cp -r /opt/tomcat/webapps/java-tomcat-maven-example/* ROOT/
                     """
                 }
