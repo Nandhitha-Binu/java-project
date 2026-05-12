@@ -1,6 +1,6 @@
 # java-tomcat-maven-example
 csdsds
-jgydtuij
+jgydt
 xsaxaxsa
 This is an example ready-to-deploy java web application built for Tomcat using Maven and webapp-runner.
 
